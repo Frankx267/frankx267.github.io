@@ -4,82 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Mwaura – Fachinformatiker in Umschulung</title>
-    .projekt {
-      background-color: white;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      padding: 15px 20px;
-      margin-bottom: 15px;
-    }
-    .projekt h3 {
-      margin-top: 0;
-      color: #2a5d84;
-    }
-    .tags {
-      font-size: 14px;
-      color: #777;
-    }
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f7f7f5;
-      color: #333;
-      margin: 0;
-      line-height: 1.6;
-    }
-    header {
-      background-color: #2a5d84;
-      color: white;
-      text-align: center;
-      padding: 40px 20px 20px;
-    }
-    header img {
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 4px solid white;
-    }
-    header h1 {
-      margin: 10px 0 5px;
-    }
-    nav a {
-      color: white;
-      margin: 0 10px;
-      text-decoration: none;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
-    main {
-      max-width: 700px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-    h2 {
-      color: #2a5d84;
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 5px;
-    }
-    a {
-      color: #2a5d84;
-    }
-    footer {
-      text-align: center;
-      color: #888;
-      font-size: 14px;
-      padding: 20px;
-    }
-  </style>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
-    <img src="foto.jpg" alt="Foto von Mwaura">
+    <img src="Foto.jpg" alt="Foto von Mwaura">
     <h1>Hallo, ich bin Mwaura</h1>
     <p>Fachinformatiker für Systemintegration in Umschulung</p>
     <nav>
       <a href="#ueber-mich">Über mich</a>
-      <a href="#umschulung">Umschulung</a>
+      <a href="#faehigkeiten">Fähigkeiten</a>
       <a href="#projekte">Projekte</a>
       <a href="#kontakt">Kontakt</a>
     </nav>
@@ -91,34 +26,54 @@
     <p>Besonders spannend finde ich Netzwerke, Server und Linux. In meiner Freizeit übe ich auf eigenen virtuellen Maschinen mit Debian und Kali Linux, um Schritt für Schritt besser zu werden.</p>
     <p>Ab Januar 2027 steht mein Praktikum an, in dem ich das Gelernte in der Praxis anwenden möchte.</p>
 
-    <h2 id="umschulung">Meine Umschulung</h2>
-    <p>In der Umschulung lerne ich unter anderem:</p>
-    <ul>
-      <li>Netzwerke</li>
-      <li>Linux</li>
-      <li>Windows Server</li>
-    </ul>
-    <h2 id="projekte">Projekte</h2>
+    <h2 id="faehigkeiten">Fähigkeiten</h2>
+    <div class="karten">
+      <div class="karte">
+        <div class="symbol">🌐</div>
+        <h3>Netzwerke</h3>
+        <p>IP-Adressen, Subnetze, Proxy-Server</p>
+      </div>
+      <div class="karte">
+        <div class="symbol">🐧</div>
+        <h3>Linux</h3>
+        <p>Debian, Kali, Kommandozeile</p>
+      </div>
+      <div class="karte">
+        <div class="symbol">🖥️</div>
+        <h3>Windows Server</h3>
+        <p>Active Directory, Domänen, AD CS</p>
+      </div>
+      <div class="karte">
+        <div class="symbol">🔒</div>
+        <h3>IT-Sicherheit</h3>
+        <p>Zertifikate, verschlüsselte Verbindungen</p>
+      </div>
+    </div>
 
+    <h2 id="projekte">Projekte</h2>
     <div class="projekt">
       <h3>Proxy-Server mit Squid</h3>
       <p>Einrichtung eines Squid-Proxys unter Linux in einer Testumgebung, inklusive SSL-Bump zur Prüfung verschlüsselter Verbindungen mit eigenen Zertifikaten.</p>
       <p class="tags">Linux · Squid · Netzwerke · Zertifikate</p>
     </div>
-
     <div class="projekt">
       <h3>Windows-Server-Domäne</h3>
       <p>Aufbau eines Domänencontrollers mit Active Directory auf Windows Server 2025, eigene Zertifizierungsstelle (AD CS) und Einbindung eines Windows-Clients in die Domäne.</p>
       <p class="tags">Windows Server · Active Directory · AD CS</p>
     </div>
-
     <div class="projekt">
       <h3>Linux-Heimlabor</h3>
       <p>Eigene virtuelle Maschinen mit VirtualBox (Debian 13 und Kali Linux), um Linux-Administration und Netzwerkthemen selbstständig zu üben.</p>
       <p class="tags">VirtualBox · Debian · Kali Linux</p>
     </div>
+    <div class="projekt">
+      <h3>Diese Webseite</h3>
+      <p>Selbst gebaut mit HTML und CSS, veröffentlicht über GitHub Pages, mit hellem und dunklem Modus.</p>
+      <p class="tags">HTML · CSS · Git · GitHub</p>
+    </div>
+
     <h2 id="kontakt">Kontakt</h2>
-    <p>Schreib mir: <a href="mailto:deine@email.de">deine@email.de</a></p>
+    <p>Schreib mir: <a href="franx6180@gmail.com">franx6180@gmail.com</a></p>
   </main>
 
   <footer>

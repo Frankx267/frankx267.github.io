@@ -1,0 +1,121 @@
+:root {
+  --hintergrund: #f7f7f5;
+  --text: #333;
+  --akzent: #2a5d84;
+  --kopf: #2a5d84;
+  --karte: #ffffff;
+  --rand: #ddd;
+  --grau: #777;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --hintergrund: #1e1f22;
+    --text: #e4e4e4;
+    --akzent: #7fb3e0;
+    --kopf: #1b3d58;
+    --karte: #2a2c30;
+    --rand: #3a3d42;
+    --grau: #a0a0a0;
+  }
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: var(--hintergrund);
+  color: var(--text);
+  margin: 0;
+  line-height: 1.6;
+}
+header {
+  background-color: var(--kopf);
+  color: white;
+  text-align: center;
+  padding: 40px 20px 20px;
+}
+header img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid white;
+}
+header h1 {
+  margin: 10px 0 5px;
+}
+nav a {
+  color: white;
+  margin: 0 10px;
+  text-decoration: none;
+  display: inline-block;
+}
+nav a:hover {
+  text-decoration: underline;
+}
+main {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+h2 {
+  color: var(--akzent);
+  border-bottom: 1px solid var(--rand);
+  padding-bottom: 5px;
+  margin-top: 40px;
+}
+a {
+  color: var(--akzent);
+}
+.karten {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+.karte {
+  flex: 1 1 120px;
+  background-color: var(--karte);
+  border: 1px solid var(--rand);
+  border-radius: 8px;
+  padding: 15px;
+  text-align: center;
+}
+.symbol {
+  font-size: 32px;
+}
+.karte h3 {
+  margin: 5px 0;
+  color: var(--akzent);
+}
+.projekt {
+  background-color: var(--karte);
+  border: 1px solid var(--rand);
+  border-radius: 8px;
+  padding: 15px 20px;
+  margin-bottom: 15px;
+}
+.projekt h3 {
+  margin-top: 0;
+  color: var(--akzent);
+}
+.tags {
+  font-size: 14px;
+  color: var(--grau);
+}
+.button {
+  display: inline-block;
+  background-color: var(--akzent);
+  color: var(--hintergrund);
+  padding: 10px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+}
+.button:hover {
+  opacity: 0.85;
+}
+footer {
+  text-align: center;
+  color: var(--grau);
+  font-size: 14px;
+  padding: 20px;
+}
