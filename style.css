@@ -126,3 +126,428 @@ footer {
 .projekt a:hover {
   text-decoration: underline;
 }
+/* Zeitleiste */
+.zeitleiste {
+  border-left: 3px solid var(--akzent);
+  margin-left: 10px;
+  padding-left: 30px;
+}
+.station {
+  position: relative;
+  margin-bottom: 25px;
+}
+.station::before {
+  content: "";
+  position: absolute;
+  left: -42px;
+  top: 4px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: var(--akzent);
+  border: 3px solid var(--hintergrund);
+}
+.station.zukunft::before {
+  background-color: var(--hintergrund);
+  border-color: var(--akzent);
+}
+.jahr {
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--akzent);
+}
+.station h3 {
+  margin: 2px 0;
+}
+.station p {
+  margin: 4px 0;
+}
+/* ===== MODERN 2026 ===== */
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+h2 {
+  scroll-margin-top: 80px;
+}
+
+/* Kopfzeile: fließender Verlauf + morphende Blobs */
+header {
+  position: relative;
+  overflow: hidden;
+  padding: 70px 20px 60px;
+  background: linear-gradient(135deg, #1b3d58, #2a5d84, #3b82c4, #1b3d58);
+  background-size: 300% 300%;
+  animation: verlauf 15s ease infinite;
+}
+header::before,
+header::after {
+  content: "";
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+  animation: morph 12s ease-in-out infinite;
+}
+header::before {
+  top: -120px;
+  left: -80px;
+}
+header::after {
+  bottom: -150px;
+  right: -100px;
+  animation-delay: -6s;
+}
+header > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Foto: morphen + schweben */
+header img {
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  animation: morph-foto 8s ease-in-out infinite, schweben 6s ease-in-out infinite;
+}
+
+/* Name mit Glanz */
+header h1 {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  background: linear-gradient(90deg, #ffffff, #a8d8ff, #ffffff);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: glanz 4s linear infinite;
+}
+
+/* Glas-Menü, klebt oben */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5px;
+  padding: 12px;
+  background: color-mix(in srgb, var(--kopf) 75%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+nav a {
+  margin: 0;
+  padding: 6px 14px;
+  border-radius: 20px;
+  transition: background 0.3s;
+}
+nav a:hover,
+nav a.aktiv {
+  background: rgba(255, 255, 255, 0.22);
+  text-decoration: none;
+}
+
+/* Fortschrittsbalken */
+.fortschritt {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  width: 0;
+  background: linear-gradient(90deg, #7fb3e0, #2a5d84);
+  z-index: 200;
+}
+
+/* Einblenden beim Scrollen */
+.einblenden {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.einblenden.sichtbar {
+  opacity: 1;
+  transform: none;
+}
+
+/* Karten und Projekte: anheben beim Drüberfahren */
+.karte,
+.projekt {
+  transition: opacity 0.8s ease, transform 0.4s ease, box-shadow 0.3s, border-color 0.3s;
+}
+.karte:hover,
+.projekt:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  border-color: var(--akzent);
+}
+.symbol {
+  transition: transform 0.4s;
+}
+.karte:hover .symbol {
+  transform: scale(1.25) rotate(-8deg);
+}
+
+/* Knopf */
+.button {
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.button:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(42, 93, 132, 0.4);
+}
+
+/* Pulsierender Zukunfts-Punkt */
+.station.zukunft::before {
+  animation: puls 2s infinite;
+}
+
+/* Animationen */
+@keyframes verlauf {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+@keyframes morph {
+  0%, 100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; transform: rotate(0deg); }
+  50% { border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%; transform: rotate(180deg); }
+}
+@keyframes morph-foto {
+  0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+  50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+}
+@keyframes schweben {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+@keyframes glanz {
+  to { background-position: 200% center; }
+}
+@keyframes puls {
+  0% { box-shadow: 0 0 0 0 rgba(42, 93, 132, 0.6); }
+  70% { box-shadow: 0 0 0 12px rgba(42, 93, 132, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(42, 93, 132, 0); }
+}
+
+/* Weniger Bewegung, wenn im System eingestellt */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+  .einblenden {
+    opacity: 1;
+    transform: none;
+  }
+}
+/* ===== Szene: Ball und Oldtimer ===== */
+.szene {
+  position: relative;
+  height: 180px;
+  margin-top: 40px;
+  overflow: hidden;
+}
+.strasse {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 30px;
+  background-color: #555;
+  background-image: linear-gradient(90deg, #f5f5f5 50%, transparent 50%);
+  background-size: 40px 3px;
+  background-repeat: repeat-x;
+  background-position: 0 center;
+  border-radius: 6px;
+}
+.ball {
+  position: absolute;
+  left: 5%;
+  bottom: 28px;
+  font-size: 34px;
+  line-height: 1;
+  opacity: 0;
+}
+.auto {
+  position: absolute;
+  bottom: 12px;
+  left: -220px;
+  width: 170px;
+  z-index: 1;
+}
+.rad {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.szene.los .ball {
+  animation: ball 10s ease-in-out infinite;
+}
+.szene.los .auto {
+  animation: fahren 10s linear infinite;
+}
+.szene.los .karosserie {
+  animation: wackeln 0.4s ease-in-out infinite alternate;
+}
+.szene.los .rad {
+  animation: drehen 0.6s linear infinite;
+}
+
+@keyframes ball {
+  0%   { opacity: 0; transform: translate(0, -160px) rotate(0deg); }
+  3%   { opacity: 1; }
+  12%  { transform: translate(0, 0) rotate(0deg); }
+  18%  { transform: translate(35px, -70px) rotate(90deg); }
+  24%  { transform: translate(70px, 0) rotate(180deg); }
+  28%  { transform: translate(90px, -25px) rotate(240deg); }
+  32%  { transform: translate(110px, 0) rotate(300deg); }
+  60%  { opacity: 1; transform: translate(950px, 0) rotate(1500deg); }
+  61%, 100% { opacity: 0; transform: translate(950px, 0) rotate(1500deg); }
+}
+@keyframes fahren {
+  0%, 30% { left: -220px; }
+  90%, 100% { left: 105%; }
+}
+@keyframes wackeln {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-1.5px); }
+}
+@keyframes drehen {
+  to { transform: rotate(360deg); }
+}
+
+/* ===== HELLER BEREICH 2026 ===== */
+
+/* Punkte-Raster im Hintergrund */
+html {
+  overflow-x: clip;
+}
+body {
+  background-image: radial-gradient(var(--rand) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+/* Aurora: zwei schwebende Farbwolken */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  z-index: -1;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.35;
+  pointer-events: none;
+  animation: aurora 25s ease-in-out infinite alternate;
+}
+body::before {
+  background: #7fb3e0;
+  top: 20%;
+  left: -150px;
+}
+body::after {
+  background: #b38be0;
+  bottom: -100px;
+  right: -150px;
+  animation-delay: -12s;
+}
+@keyframes aurora {
+  0%   { transform: translate(0, 0) scale(1); }
+  50%  { transform: translate(150px, -100px) scale(1.2); }
+  100% { transform: translate(-100px, 80px) scale(0.9); }
+}
+
+/* Glas-Karten */
+.karte,
+.projekt {
+  background-color: color-mix(in srgb, var(--karte) 60%, transparent);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid color-mix(in srgb, var(--rand) 70%, transparent);
+  border-radius: 16px;
+    --x: 50%;
+  --y: 50%;
+}
+
+/* Spotlight: Licht folgt der Maus */
+.karte:hover,
+.projekt:hover {
+  background-image: radial-gradient(300px circle at var(--x) var(--y), rgba(127, 179, 224, 0.25), transparent 60%);
+  transition: opacity 0.8s ease, transform 0.15s ease, box-shadow 0.3s, border-color 0.3s;
+}
+
+/* Überschriften mit Farbbalken */
+main h2 {
+  position: relative;
+  border-bottom: none;
+  padding-bottom: 10px;
+}
+main h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--akzent), #7fb3e0, #b38be0);
+  transition: width 1s ease 0.3s;
+}
+main h2.sichtbar::after {
+  width: 80px;
+}
+
+/* Bento-Raster: Fähigkeiten */
+.karten {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+.karte:nth-child(1),
+.karte:nth-child(4) {
+  grid-column: span 2;
+}
+
+/* Bento-Raster: Projekte */
+.bento {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+.bento .projekt {
+  margin-bottom: 0;
+}
+.bento .projekt:nth-child(1),
+.bento .projekt:nth-child(4) {
+  grid-column: span 2;
+}
+
+/* Handy: alles untereinander */
+@media (max-width: 600px) {
+  .karten,
+  .bento {
+    grid-template-columns: 1fr;
+  }
+  .karte,
+  .bento .projekt {
+    grid-column: auto !important;
+  }
+}
+
+/* Bei "weniger Bewegung": Auto parkt, Ball liegt */
+@media (prefers-reduced-motion: reduce) {
+  .ball {
+    opacity: 1;
+    left: 15%;
+     z-index: 1; 
+  }
+  .auto {
+    left: 55%;
+  }
+}
