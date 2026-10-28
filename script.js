@@ -52,3 +52,27 @@ if (szene) {
     }
   }, { threshold: 0.5 }).observe(szene);
 }
+
+// Spotlight und 3D-Kippen (nur mit Maus und ohne "weniger Bewegung")
+const bewegungOk =
+  window.matchMedia("(hover: hover)").matches &&
+  !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+if (bewegungOk) {
+  document.querySelectorAll(".karte, .projekt").forEach((karte) => {
+    karte.addEventListener("mousemove", (e) => {
+      const r = karte.getBoundingClientRect();
+      const x = e.clientX - r.left;
+      const y = e.clientY - r.top;
+      karte.style.setProperty("--x", x + "px");
+      karte.style.setProperty("--y", y + "px");
+      const kippX = (y / r.height - 0.5) * -8;
+      const kippY = (x / r.width - 0.5) * 8;
+      karte.style.transform =
+        `perspective(800px) rotateX(${kippX}deg) rotateY(${kippY}deg) translateY(-6px)`;
+    });
+    karte.addEventListener("mouseleave", () => {
+      karte.style.transform = "";
+    });
+  });
+}
