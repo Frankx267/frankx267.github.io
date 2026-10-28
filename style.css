@@ -339,3 +339,76 @@ nav a.aktiv {
     transform: none;
   }
 }
+/* ===== Szene: Ball und Oldtimer ===== */
+.szene {
+  position: relative;
+  height: 180px;
+  margin-top: 40px;
+  overflow: hidden;
+}
+.strasse {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 30px;
+  background-color: #555;
+  background-image: linear-gradient(90deg, #f5f5f5 50%, transparent 50%);
+  background-size: 40px 3px;
+  background-repeat: repeat-x;
+  background-position: 0 center;
+  border-radius: 6px;
+}
+.ball {
+  position: absolute;
+  left: 5%;
+  bottom: 28px;
+  font-size: 34px;
+  line-height: 1;
+  opacity: 0;
+}
+.auto {
+  position: absolute;
+  bottom: 14px;
+  left: -220px;
+  width: 170px;
+}
+.rad {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.szene.los .ball {
+  animation: ball 10s ease-in-out infinite;
+}
+.szene.los .auto {
+  animation: fahren 10s linear infinite;
+}
+.szene.los .karosserie {
+  animation: wackeln 0.4s ease-in-out infinite alternate;
+}
+.szene.los .rad {
+  animation: drehen 0.6s linear infinite;
+}
+
+@keyframes ball {
+  0%   { opacity: 0; transform: translate(0, -160px) rotate(0deg); }
+  3%   { opacity: 1; }
+  12%  { transform: translate(0, 0) rotate(0deg); }
+  18%  { transform: translate(35px, -70px) rotate(90deg); }
+  24%  { transform: translate(70px, 0) rotate(180deg); }
+  28%  { transform: translate(90px, -25px) rotate(240deg); }
+  32%  { transform: translate(110px, 0) rotate(300deg); }
+  60%  { opacity: 1; transform: translate(950px, 0) rotate(1500deg); }
+  61%, 100% { opacity: 0; transform: translate(950px, 0) rotate(1500deg); }
+}
+@keyframes fahren {
+  0%, 30% { left: -220px; }
+  90%, 100% { left: 105%; }
+}
+@keyframes wackeln {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-1.5px); }
+}
+@keyframes drehen {
+  to { transform: rotate(360deg); }
+}

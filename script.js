@@ -42,3 +42,13 @@ document.querySelectorAll("main h2, .karte, .projekt, .station").forEach((el) =>
 document.querySelectorAll(".karte").forEach((karte, i) => {
   karte.style.transitionDelay = i * 0.12 + "s";
 });
+// Szene starten, sobald sie sichtbar ist
+const szene = document.querySelector(".szene");
+if (szene) {
+  new IntersectionObserver((eintraege, obs) => {
+    if (eintraege[0].isIntersecting) {
+      szene.classList.add("los");
+      obs.disconnect();
+    }
+  }, { threshold: 0.5 }).observe(szene);
+}
