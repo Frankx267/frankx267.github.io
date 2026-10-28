@@ -369,9 +369,10 @@ nav a.aktiv {
 }
 .auto {
   position: absolute;
-  bottom: 14px;
+  bottom: 12px;
   left: -220px;
   width: 170px;
+  z-index: 1;
 }
 .rad {
   transform-box: fill-box;
@@ -537,6 +538,7 @@ main h2.sichtbar::after {
   .ball {
     opacity: 1;
     left: 15%;
+     z-index: 1; 
   }
   .auto {
     left: 55%;
