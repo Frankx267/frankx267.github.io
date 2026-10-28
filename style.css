@@ -531,3 +531,14 @@ main h2.sichtbar::after {
     grid-column: auto !important;
   }
 }
+
+/* Bei "weniger Bewegung": Auto parkt, Ball liegt */
+@media (prefers-reduced-motion: reduce) {
+  .ball {
+    opacity: 1;
+    left: 15%;
+  }
+  .auto {
+    left: 55%;
+  }
+}
