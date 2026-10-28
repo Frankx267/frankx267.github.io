@@ -119,3 +119,39 @@ footer {
   font-size: 14px;
   padding: 20px;
 }
+/* Zeitleiste */
+.zeitleiste {
+  border-left: 3px solid var(--akzent);
+  margin-left: 10px;
+  padding-left: 30px;
+}
+.station {
+  position: relative;
+  margin-bottom: 25px;
+}
+.station::before {
+  content: "";
+  position: absolute;
+  left: -42px;
+  top: 4px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: var(--akzent);
+  border: 3px solid var(--hintergrund);
+}
+.station.zukunft::before {
+  background-color: var(--hintergrund);
+  border-color: var(--akzent);
+}
+.jahr {
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--akzent);
+}
+.station h3 {
+  margin: 2px 0;
+}
+.station p {
+  margin: 4px 0;
+}
